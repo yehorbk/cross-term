@@ -3,7 +3,7 @@ OUTDIR=build
 INDIR=src
 
 CC=gcc
-FLAGS=-c -Wall
+FLAGS=-Wall
 SOURCES=main.c
 
 OBJECTS=$(INDIR)/$(SOURCES:.cpp=.o)
