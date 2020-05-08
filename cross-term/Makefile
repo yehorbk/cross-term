@@ -1,17 +1,17 @@
-CC=gcc
-CFLAGS=-c -Wall
-LDFLAGS=
-SOURCES=main.c
-OBJECTS=$(SOURCES:.cpp=.o)
 TITLE=crossterm
+OUTDIR=build
+INDIR=src
 
-all: $(SOURCES) $(TITLE)
+CC=gcc
+FLAGS=-c -Wall
+SOURCES=main.c
+
+OBJECTS=$(INDIR)/$(SOURCES:.cpp=.o)
+
+all: $(INDIR)/$(SOURCES) $(TITLE)
 	
 $(TITLE): clean $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o ./build/$@
-
-.cpp.o:
-	$(CC) $(CFLAGS) $< -o ./build/$@
+	$(CC) $(FLAGS) $(OBJECTS) -o $(OUTDIR)/$@
 
 clean:
-	rm -r ./build ; mkdir build
+	rm -r $(OUTDIR) ; mkdir build
