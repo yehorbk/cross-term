@@ -2,16 +2,19 @@ TITLE=crossterm
 OUTDIR=build
 INDIR=src
 
-CC=gcc
+CC=g++
 FLAGS=-Wall
-SOURCES=main.c
+SOURCES=main.cpp
 
 OBJECTS=$(INDIR)/$(SOURCES:.cpp=.o)
 
-all: $(INDIR)/$(SOURCES) $(TITLE)
-	
-$(TITLE): clean $(OBJECTS)
-	$(CC) $(FLAGS) $(OBJECTS) -o $(OUTDIR)/$@
+all: clean compile remove-objects
+
+compile: $(OBJECTS)
+	$(CC) $(FLAGS) $(OBJECTS) -o $(OUTDIR)/$(TITLE);
+
+remove-objects:
+	rm src/*.o
 
 clean:
 	rm -r $(OUTDIR) ; mkdir build
