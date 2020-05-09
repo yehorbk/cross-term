@@ -1,4 +1,7 @@
 #include <fstream>
+
+#include "imports.hpp"
+#include "trim.hpp"
 #include "managers.hpp"
 
 namespace Managers {
@@ -12,7 +15,7 @@ namespace Managers {
             string title, commands;
             while (in >> title) {
                 getline(in, commands);
-                result[title] = commands;
+                result[title] = ltrim(commands);
             }
         } else {
             cout << "Cannot open the file!" << endl;
