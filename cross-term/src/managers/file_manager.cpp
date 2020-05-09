@@ -18,7 +18,9 @@ namespace Managers {
                 result[title] = ltrim(commands);
             }
         } else {
-            cout << "Cannot open the file!" << endl;
+            ofstream out(path);
+            out.close();
+            return loadFile(path);
         }
         in.close();
         return result;

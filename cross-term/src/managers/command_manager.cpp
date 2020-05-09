@@ -17,8 +17,12 @@ namespace Managers {
 
     string CommandManager::getCommandByKey(string command) {
         string result;
-        for(auto& item : CommandManager::commandsList) {
-            result = regex_replace(command, regex(item.first), item.second);
+        if (CommandManager::commandsList.size() != 0) {
+            for(auto& item : CommandManager::commandsList) {
+                result = regex_replace(command, regex(item.first), item.second);
+            }
+        } else {
+            result = command;
         }
         return result;
     }
