@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 std::string& ltrim(std::string& str, const std::string& chars = "\t\n\v\f\r ");
