@@ -1,14 +1,13 @@
-#include <iostream>
-#include <string>
 #include "managers.hpp"
 
-using namespace std;
 using namespace Managers;
 
 int main() {
+    CommandManager commandManager = CommandManager();
     string command;
     while(true) {
-        cin >> command;
+        getline(cin, command);
+        commandManager.executeCommand(command);
     }
     return 0;
 }
