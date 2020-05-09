@@ -51,5 +51,8 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# Ignore Mac specific files
+# Mac Specific Files
 .DS_Store
+
+# Build Files
+*/build
