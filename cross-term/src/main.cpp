@@ -4,6 +4,7 @@ int main() {
     FileManager fm = FileManager();
     map<string, string> commandsList = fm.loadFile(COMMANDS_FILE);
     CommandManager commandManager = CommandManager(commandsList);
+    showGreetings();
     startShell(commandManager);
     return 0;
 }
@@ -14,4 +15,8 @@ void startShell(CommandManager commandManager) {
         getline(cin, command);
         commandManager.executeCommand(command);
     }
+}
+
+void showGreetings() {
+    cout << endl << "Welcome to cross-term!" << endl;
 }
