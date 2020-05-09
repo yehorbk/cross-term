@@ -8,3 +8,4 @@ using namespace Managers;
 
 void showGreetings();
 void startShell(CommandManager commandManager);
+void showCommandPrompt();

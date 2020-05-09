@@ -12,6 +12,7 @@ int main() {
 void startShell(CommandManager commandManager) {
     string command;
     while(true) {
+        showCommandPrompt();
         getline(cin, command);
         commandManager.executeCommand(command);
     }
@@ -19,4 +20,8 @@ void startShell(CommandManager commandManager) {
 
 void showGreetings() {
     cout << endl << "Welcome to cross-term!" << endl;
+}
+
+void showCommandPrompt() {
+    cout << "> ";
 }
