@@ -1,20 +1,36 @@
-TITLE=crossterm
-OUTDIR=build
-INDIR=src
-
+TARGET_EXEC ?= crossterm
 CC=g++
-FLAGS=-Wall
-SOURCES=main.cpp
 
-OBJECTS=$(INDIR)/$(SOURCES:.cpp=.o)
+BUILD_DIR ?= ./build
+SRC_DIRS ?= ./src
 
-all: clean compile remove-objects
+SRCS := $(shell find $(SRC_DIRS) -name *.cpp -or -name *.c -or -name *.s)
+OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
+DEPS := $(OBJS:.o=.d)
 
-compile: $(OBJECTS)
-	$(CC) $(FLAGS) $(OBJECTS) -o $(OUTDIR)/$(TITLE);
+INC_DIRS := $(shell find $(SRC_DIRS) -type d)
+INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+
+CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
+
+$(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
+	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+
+# c++ source
+$(BUILD_DIR)/%.cpp.o: %.cpp
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+
+
+.PHONY: clean remove-objects
 
 remove-objects:
-	rm src/*.o
+	rm src/*.o;
+	rm src/*.d;
 
 clean:
-	rm -r $(OUTDIR) ; mkdir build
+	$(RM) -r $(BUILD_DIR)
+
+-include $(DEPS)
+
+MKDIR_P ?= mkdir -p

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "./managers/managers.hpp"
+#include "managers.hpp"
 
 using namespace std;
 using namespace Managers;

@@ -5,5 +5,8 @@ namespace Managers {
     public:
         CommandManager();
     };
-    class FileManager {};
+    class FileManager {
+    public:
+        FileManager();
+    };
 }

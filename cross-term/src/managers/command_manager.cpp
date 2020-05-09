@@ -1,5 +1,5 @@
 #include "managers.hpp"
 
 namespace Managers {
-    FileManager::FileManager() {}
+    CommandManager::CommandManager() {}
 }
