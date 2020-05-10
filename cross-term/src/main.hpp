@@ -2,10 +2,8 @@
 
 #include "imports.hpp"
 #include "managers.hpp"
+#include "shell.hpp"
 #include "config.hpp"
 
 using namespace Managers;
-
-void showGreetings();
-void startShell(CommandManager commandManager);
-void showCommandPrompt();
+using namespace Controllers;

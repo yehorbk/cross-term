@@ -1,14 +1,15 @@
 #include <fstream>
+#include <json/json.h>
 
-#include "imports.hpp"
-#include "trim.hpp"
 #include "managers.hpp"
+#include "trim.hpp"
+
 
 namespace Managers {
 
     FileManager::FileManager() {}
 
-    map<string, string> FileManager::loadFile(string path) {
+    map<string, string> FileManager::loadCommands(string path) {
         map<string, string> result;
         ifstream in(path);
         if (in.is_open()) {
@@ -20,7 +21,7 @@ namespace Managers {
         } else {
             ofstream out(path);
             out.close();
-            return loadFile(path);
+            return loadCommands(path);
         }
         in.close();
         return result;
