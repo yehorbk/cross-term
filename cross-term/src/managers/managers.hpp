@@ -6,6 +6,7 @@ namespace Managers {
 
     class CommandManager {
     private:
+        const string PATH = "settings.xml"; 
         map<string, string> commandsList;
         string getCommandByKey(string command);
     public:
