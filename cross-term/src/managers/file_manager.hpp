@@ -5,6 +5,7 @@
 #include "imports.hpp"
 #include "pugixml.hpp"
 #include "trim.hpp"
+#include "config.hpp"
 
 using namespace pugi;
 
@@ -18,6 +19,7 @@ namespace Managers {
     public:
         FileManager();
         map<string, string> loadCommands();
+        Models::Config loadConfig();
     };
 
 }

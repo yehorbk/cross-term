@@ -15,4 +15,9 @@ namespace Models {
         return this->prompt;
     }
 
+    string Config::toString() {
+        return "Config { greeting = " + this->greeting + ", prompt = " 
+            + this->prompt + " };";
+    }
+
 }

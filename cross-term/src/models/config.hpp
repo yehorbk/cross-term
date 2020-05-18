@@ -1,3 +1,5 @@
+#pragma once
+
 #include "imports.hpp"
 
 namespace Models {
@@ -10,6 +12,7 @@ namespace Models {
         Config(string greeting, string prompt);
         string getGreeting();
         string getPrompt();
+        string toString();
     };
 
 }

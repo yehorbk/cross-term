@@ -20,4 +20,10 @@ namespace Managers {
         return result;
     }
 
+    Models::Config FileManager::loadConfig() {
+        string greeting = this->settings.child_value("greeting");
+        string prompt = this->settings.child_value("prompt");
+        return Models::Config(greeting, prompt);
+    }
+
 }
