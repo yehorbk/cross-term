@@ -1,10 +1,11 @@
 #pragma once
 
 #include <fstream>
-
-#include "imports.hpp"
+#include <filesystem>
 #include "pugixml.hpp"
 #include "trim.hpp"
+
+#include "imports.hpp"
 #include "logger.hpp"
 #include "config.hpp"
 
@@ -14,11 +15,11 @@ namespace Managers {
 
     class FileManager {
     private:
-        string PATH = "settings.xml";
+        const string SETTINGS_FILENAME = "/settings.xml";
         xml_document doc;
         void logFileLoading(string result);
     public:
-        FileManager();
+        FileManager(string path);
         map<string, string> loadCommands();
         Models::Config loadConfig();
     };

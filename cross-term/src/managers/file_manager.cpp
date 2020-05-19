@@ -2,8 +2,9 @@
 
 namespace Managers {
 
-    FileManager::FileManager() {
-        xml_parse_result parseResult = this->doc.load_file(this->PATH.c_str());
+    FileManager::FileManager(string path) {
+        string file = path.substr(0, path.find_last_of("/")) + this->SETTINGS_FILENAME;
+        xml_parse_result parseResult = this->doc.load_file(file.c_str());
         if (parseResult.description() == "File was not found") {
             Logger::error(Error::SETTINGS_FILE_NOT_FOUND);
         }

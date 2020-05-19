@@ -20,7 +20,6 @@ namespace Controllers {
     void Shell::showGreetings() {
         string greeting = this->commandManager.getCommandResult(this->config.getGreeting().c_str());
         cout << greeting;
-        
     }
 
     void Shell::showCommandPrompt() {

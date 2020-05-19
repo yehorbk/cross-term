@@ -2,9 +2,10 @@
 
 #include <regex>
 #include <unistd.h>
+#include "trim.hpp"
+
 #include "imports.hpp"
 #include "logger.hpp"
-#include "trim.hpp"
 
 namespace Managers {
 
