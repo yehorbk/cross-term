@@ -8,3 +8,5 @@ $ make
 ```
 - To build with Visual Studio you need to create the C++ Console Application and move files from `cross-term/cross-term/src` to
 your project's source folder and run 'Build'. 
+
+\***version 1.0.0 doesn't work on Windows yet**
