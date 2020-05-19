@@ -1,6 +1,6 @@
 # Cross-Term
 Cross-platform terminal emulator with flexible script configuration.
-# How to Use
+# How to use
 All settings are in file settings.xml. This file have a basic structure and consists of `greeting`, `prompt` and `commands` sections. You able to use any commands or run files with scripts.
 ## Settings XML Basic Structure
 ```
