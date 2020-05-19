@@ -5,6 +5,8 @@
 
 namespace Managers {
 
+    CommandManager::CommandManager() {}
+
     CommandManager::CommandManager(map<string, string> commandsList) {
         CommandManager::commandsList = commandsList;
     }
@@ -24,6 +26,21 @@ namespace Managers {
         } else {
             result = command;
         }
+        return result;
+    }
+
+    string CommandManager::getCommandResult(string command) {
+        char buffer[128];
+        string result = "";
+        FILE* pipe = popen(command.c_str(), "r");
+        if (!pipe) {
+            return "popen failed!";
+        }
+        while (!feof(pipe)) {
+            if (fgets(buffer, 128, pipe) != NULL)
+                result += buffer;
+        }
+        pclose(pipe);
         return result;
     }
 

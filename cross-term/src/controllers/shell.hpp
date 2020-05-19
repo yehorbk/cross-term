@@ -1,6 +1,7 @@
 #pragma once
 
 #include "imports.hpp"
+#include "config.hpp"
 #include "command_manager.hpp"
 
 using namespace Managers;
@@ -9,13 +10,13 @@ namespace Controllers {
 
     class Shell {
     private:
-        string greetings;
-        string prompt;
+        Models::Config config;
+        CommandManager commandManager;
         void showGreetings();
         void showCommandPrompt();
     public:
-        Shell();
-        void startShell(CommandManager commandManager);
+        Shell(Models::Config config, CommandManager commandManager);
+        void startShell();
     };
 
 }

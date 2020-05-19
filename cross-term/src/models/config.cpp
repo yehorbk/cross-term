@@ -2,6 +2,8 @@
 
 namespace Models {
 
+    Config::Config() {}
+
     Config::Config(string greeting, string prompt) {
         this->greeting = greeting;
         this->prompt = prompt;

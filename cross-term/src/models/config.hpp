@@ -9,6 +9,7 @@ namespace Models {
         string greeting;
         string prompt;
     public:
+        Config();
         Config(string greeting, string prompt);
         string getGreeting();
         string getPrompt();

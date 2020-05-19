@@ -9,8 +9,10 @@ namespace Managers {
         map<string, string> commandsList;
         string getCommandByKey(string command);
     public:
+        CommandManager();
         CommandManager(map<string, string> commandsList);
         bool executeCommand(string command);
+        string getCommandResult(string command);
     };
     
 }
