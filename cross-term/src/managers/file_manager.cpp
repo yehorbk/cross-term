@@ -4,7 +4,7 @@ namespace Managers {
 
     FileManager::FileManager() {
         xml_parse_result parseResult = this->doc.load_file(this->PATH.c_str());
-        cout << "File loaded with result: " << parseResult.description() << endl;
+        // cout << "File loaded with result: " << parseResult.description() << endl;
     }
 
     map<string, string> FileManager::loadCommands() {
@@ -13,7 +13,7 @@ namespace Managers {
         for (xml_node command : commands.children("Item")) {
             string title = command.child_value("command");
             string execute = command.child_value("execute");
-            result[title] = ltrim(execute);
+            result.insert(pair<string, string>(trim(title), trim(execute)));
         }
         return result;
     }
