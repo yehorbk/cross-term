@@ -4,7 +4,9 @@ namespace Managers {
 
     FileManager::FileManager() {
         xml_parse_result parseResult = this->doc.load_file(this->PATH.c_str());
-        // cout << "File loaded with result: " << parseResult.description() << endl;
+        if (parseResult.description() == "File was not found") {
+            Logger::error(Error::SETTINGS_FILE_NOT_FOUND);
+        }
     }
 
     map<string, string> FileManager::loadCommands() {

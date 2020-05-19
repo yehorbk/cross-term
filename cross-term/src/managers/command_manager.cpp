@@ -1,6 +1,5 @@
 #include <regex>
 
-#include "imports.hpp"
 #include "command_manager.hpp"
 
 namespace Managers {
@@ -36,7 +35,8 @@ namespace Managers {
         string result = "";
         FILE* pipe = popen(command.c_str(), "r");
         if (!pipe) {
-            return "popen failed!";
+            Logger::error(Error::CANNOT_OPEN_PIPE);
+            return "";
         }
         while (!feof(pipe)) {
             if (fgets(buffer, 128, pipe) != NULL)

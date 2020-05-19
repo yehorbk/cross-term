@@ -1,6 +1,7 @@
 #pragma once
 
 #include "imports.hpp"
+#include "logger.hpp"
 
 namespace Managers {
 
