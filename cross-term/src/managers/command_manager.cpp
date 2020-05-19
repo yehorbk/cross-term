@@ -1,5 +1,3 @@
-#include <regex>
-
 #include "command_manager.hpp"
 
 namespace Managers {
@@ -12,8 +10,12 @@ namespace Managers {
 
     bool CommandManager::executeCommand(string input) {
         string command = getCommandByKey(input);
-        int error = system(command.c_str());
-        return error == 0 ? true : false;
+        if (this->checkIsSpecialCommand(input)) {
+            return true;
+        } else {
+            int error = system(command.c_str());
+            return error == 0 ? true : false;
+        }
     }
 
     string CommandManager::getCommandByKey(string command) {
@@ -44,6 +46,23 @@ namespace Managers {
         }
         pclose(pipe);
         return result;
+    }
+
+    bool CommandManager::checkIsSpecialCommand(string command) {
+        for (const string &key : this->specialCommands) {
+            if (command.find(key) != -1) {
+                string args = regex_replace(command, regex(key), "");
+                this->executeSpecial(key, trim(args));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void CommandManager::executeSpecial(string command, string args) {
+        if (command == "cd") {
+            chdir(args.c_str());
+        }
     }
 
 }
