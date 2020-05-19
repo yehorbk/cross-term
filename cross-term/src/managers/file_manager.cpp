@@ -3,16 +3,14 @@
 namespace Managers {
 
     FileManager::FileManager() {
-        xml_document doc;
-        xml_parse_result parseResult = doc.load_file(this->PATH.c_str());
+        xml_parse_result parseResult = this->doc.load_file(this->PATH.c_str());
         cout << "File loaded with result: " << parseResult.description() << endl;
-        this->settings = doc.child("settings");
-        this->commands = doc.child("commands");
     }
 
     map<string, string> FileManager::loadCommands() {
-        map<string, string> result;        
-        for (xml_node command : this->commands.children("Item")) {
+        map<string, string> result;
+        xml_node commands = this->doc.child("commands");
+        for (xml_node command : commands.children("Item")) {
             string title = command.child_value("command");
             string execute = command.child_value("execute");
             result[title] = ltrim(execute);
@@ -21,8 +19,9 @@ namespace Managers {
     }
 
     Models::Config FileManager::loadConfig() {
-        string greeting = this->settings.child_value("greeting");
-        string prompt = this->settings.child_value("prompt");
+        xml_node settings = this->doc.child("settings");
+        string greeting = settings.child_value("greeting");
+        string prompt = settings.child_value("prompt");
         return Models::Config(greeting, prompt);
     }
 

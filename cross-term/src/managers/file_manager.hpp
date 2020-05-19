@@ -14,8 +14,7 @@ namespace Managers {
     class FileManager {
     private:
         string PATH = "settings.xml";
-        xml_node settings;
-        xml_node commands;
+        xml_document doc;
     public:
         FileManager();
         map<string, string> loadCommands();
