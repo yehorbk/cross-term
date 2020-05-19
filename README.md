@@ -24,31 +24,33 @@ All settings are in file settings.xml. This file have a basic structure and cons
 - `execute` - script or file what will be executed
 # Examples of Configuration
 ## Simple Unix Terminal
-settings.xml:
 ```
+<!-- settings.xml -->
 ...
 <greeting>date</greeting>
 <prompt>printf "$USER:${PWD##*/}$ "</prompt>
 ...
 ```
-Result:
 ```
+# result
 Tue May 19 20:55:49 EEST 2020
 admin:Desktop$  
 ```
 ## Git Publisher
-publish.sh:
 ```
+# publish.sh
 git add . ;
 git commit ;
 git push
 ```
-settings.xml:
 ```
+<!-- settings.xml: -->
+...
 <Item>
   <command>publish</command>
   <execute>./publish.sh</execute>
 </Item>
+...
 ```
 # Build
 - [Unix](https://github.com/yehorbk/cross-term/blob/master/docs/building-unix.md)
