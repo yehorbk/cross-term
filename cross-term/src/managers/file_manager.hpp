@@ -1,7 +1,12 @@
 #pragma once
 
+#if __has_include(<filesystem>)
+#  include <filesystem>
+#elif __has_include(<experimental/filesystem>)
+#  include <experimental/filesystem>
+#endif
+
 #include <fstream>
-#include <filesystem>
 #include "pugixml.hpp"
 #include "trim.hpp"
 
