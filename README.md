@@ -1,7 +1,7 @@
 # Cross-Term
 [![Build Status](https://travis-ci.org/yehorbk/cross-term.svg?branch=master)](https://travis-ci.org/yehorbk/cross-term)
-[![npm version](https://img.shields.io/github/v/release/yehorbk/cross-term)](https://www.npmjs.com/package/impress)
-[![Licence](https://img.shields.io/github/license/yehorbk/cross-term)]()
+[![Release version](https://img.shields.io/github/v/release/yehorbk/cross-term)](https://github.com/yehorbk/cross-term/releases/tag/v1.0.0)
+[![Licence](https://img.shields.io/github/license/yehorbk/cross-term)](https://github.com/yehorbk/cross-term/blob/master/LICENSE)
 # How to use
 All settings are in file settings.xml. This file have a basic structure and consists of `greeting`, `prompt` and `commands` sections. You able to use any commands or run files with scripts.
 ## Settings XML Basic Structure
