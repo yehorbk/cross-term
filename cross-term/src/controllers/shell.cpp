@@ -8,22 +8,24 @@ namespace Controllers {
     }
 
     void Shell::startShell() {
-        showGreetings();
+        this->showGreetings();
         string command;
         while(true) {
-            showCommandPrompt();
+            this->showCommandPrompt();
             getline(cin, command);
             this->commandManager.executeCommand(command);
         }
     }
 
     void Shell::showGreetings() {
-        string greeting = this->commandManager.getCommandResult(this->config.getGreeting().c_str());
+        string greeting = this->commandManager
+            .getCommandResult(this->config.getGreeting().c_str());
         cout << greeting;
     }
 
     void Shell::showCommandPrompt() {
-        string prompt = this->commandManager.getCommandResult(this->config.getPrompt().c_str());
+        string prompt = this->commandManager
+            .getCommandResult(this->config.getPrompt().c_str());
         cout << prompt;
     }
 

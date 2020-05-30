@@ -28,6 +28,9 @@ $(BUILD_DIR)/%.c.o: %.c
 
 .PHONY: clean remove-objects
 
+lint:
+	cppcheck -isrc/lib src
+
 remove-objects:
 	rm src/*.o;
 	rm src/*.d;

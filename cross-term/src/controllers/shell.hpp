@@ -9,14 +9,15 @@ using namespace Managers;
 namespace Controllers {
 
     class Shell {
+    public:
+        Shell(Models::Config config, CommandManager commandManager);
+        void startShell();
+
     private:
         Models::Config config;
         CommandManager commandManager;
         void showGreetings();
         void showCommandPrompt();
-    public:
-        Shell(Models::Config config, CommandManager commandManager);
-        void startShell();
     };
 
 }

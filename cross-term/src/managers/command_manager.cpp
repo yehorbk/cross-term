@@ -23,7 +23,8 @@ namespace Managers {
         if (CommandManager::commandsList.size() != 0) {
             for(auto& item : CommandManager::commandsList) {
                 if (command.find(item.first) != -1) {
-                    result = regex_replace(command, regex(item.first), item.second);
+                    result = regex_replace(command,
+                        regex(item.first), item.second);
                 }
             }
         } else {
@@ -41,8 +42,9 @@ namespace Managers {
             return "";
         }
         while (!feof(pipe)) {
-            if (fgets(buffer, 128, pipe) != NULL)
+            if (fgets(buffer, 128, pipe) != NULL) {
                 result += buffer;
+            }
         }
         pclose(pipe);
         return result;
