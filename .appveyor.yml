@@ -24,6 +24,7 @@ environment:
         - TOOLCHAIN: msvc14
 
 build_script:
+    - cd cross-term
     - mkdir build
     - cd build
     - cmake .. %CMAKE_CONFIGURE_FLAGS%
