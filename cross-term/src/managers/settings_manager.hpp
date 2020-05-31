@@ -2,7 +2,7 @@
 
 #if __has_include(<filesystem>)
 #  include <filesystem>
-#else
+#elif __has_include(<experimental/filesystem>)
 #  include <experimental/filesystem>
 #endif
 #include <fstream>
@@ -18,15 +18,15 @@ using namespace pugi;
 
 namespace Managers {
 
-    class FileManager {
+    class SettingsManager {
     public:
-        FileManager(string path);
+        SettingsManager(string path);
         map<string, string> loadCommands();
         Models::Config loadConfig();
 
     private:
-        xml_document doc;
         const string SETTINGS_FILENAME = "/settings.xml";
+        xml_document doc;
         void logFileLoading(string result);
     };
 

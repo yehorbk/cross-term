@@ -38,7 +38,7 @@ namespace Managers {
         string result = "";
         FILE* pipe = popen(command.c_str(), "r");
         if (!pipe) {
-            Logger::error(Error::CANNOT_OPEN_PIPE);
+            Logger::error(Error(ErrorCase::CANNOT_OPEN_PIPE));
             return "";
         }
         while (!feof(pipe)) {
