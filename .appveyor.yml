@@ -1,0 +1,45 @@
+image: Visual Studio 2015
+
+init:
+    - git config --global core.autocrlf input
+
+clone_folder: c:\projects\cross-term
+shallow_clone: true
+
+matrix:
+    fast_finish: false
+
+platform:
+    - x64
+    - x86
+
+configuration:
+    - Debug
+    - Release
+
+environment:
+    matrix:
+        - TOOLCHAIN: msvc10
+        - TOOLCHAIN: msvc12
+        - TOOLCHAIN: msvc14
+
+build_script:
+    - cd cross-term
+    - make
+
+artifacts:
+    - path: <local-package-path>
+      name: package_name
+
+deploy:
+    description: '$(APPVEYOR_REPO_TAG_NAME)'
+    provider: GitHub
+
+    auth_token:
+        secure: <encrypted-github-token>
+
+    artifact: package_name
+    force_update: true
+
+    on:
+        appveyor_repo_tag: true
