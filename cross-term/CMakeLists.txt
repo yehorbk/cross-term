@@ -5,5 +5,6 @@ include_directories(src)
 
 set(SOURCES src/main.cpp)
 file(GLOB SOURCES "src/**/*.cpp")
+file(GLOB SOURCES "src/lib/**/*.cpp")
  
 add_executable(crossterm ${SOURCES})
