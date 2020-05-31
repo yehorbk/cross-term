@@ -6,7 +6,8 @@ namespace Managers {
         string file = path.substr(0, path.find_last_of("/"))
             + this->SETTINGS_FILENAME;
         xml_parse_result parseResult = this->doc.load_file(file.c_str());
-        if (strcmp(parseResult.description(), "File was not found") == 0) {
+        if (((string)parseResult.description())
+            .compare("File was not found") == 0) {
             Logger::error(Error(ErrorCase::SETTINGS_FILE_NOT_FOUND));
         }
     }
