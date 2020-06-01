@@ -4,7 +4,7 @@
 #if unix || __APPLE__ || __linux__
     #include <unistd.h>
 #elif _WIN32
-    #inlcude <direct.h>
+    #include <direct.h>
 #endif
 
 
