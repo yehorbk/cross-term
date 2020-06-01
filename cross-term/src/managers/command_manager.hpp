@@ -9,7 +9,6 @@
     #define pclose  _pclose
 #endif
 
-
 #include "lib/trim/trim.hpp"
 
 #include "environment/imports.hpp"
