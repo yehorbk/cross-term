@@ -1,12 +1,11 @@
 # Building cross-term for Windows
-You can use different methods to build project, but I recommend you to use `make` or it analogs and Visual Studio (easier).
-- To build with `make` you should to reconfigure `Makefile` to match Windows standarts and then:
+To make a build for Windows you should to have ```cmake``` and ```Microsoft Visual Studio 2015``` or higher.
+Use this simple commands to make a Visual Studio project with ```cmake```:
 ```
 $ git clone https://github.com/yehorbk/cross-term.git
 $ cd cross-term/cross-term
-$ make
+$ mkdir build
+$ cd build
+$ cmake ..
 ```
-- To build with Visual Studio you need to create the C++ Console Application and move files from `cross-term/cross-term/src` to
-your project's source folder and run 'Build'. 
-
-\***version 1.0.0 doesn't work on Windows yet**
+Generated Visual Studio project will be in `build` directory. Then you can make changes and build project with Visual Studio.
