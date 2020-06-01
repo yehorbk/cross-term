@@ -1,7 +1,7 @@
 #pragma once
 
-#include <imports.hpp>
-#include <config.hpp>
+#include "environment/imports.hpp"
+#include "models/config.hpp"
 
 #include "managers/settings_manager.hpp"
 #include "managers/command_manager.hpp"
