@@ -1,8 +1,8 @@
 #pragma once
 
-#include "imports.hpp"
-#include "config.hpp"
-#include "command_manager.hpp"
+#include "environment/imports.hpp"
+#include "models/config.hpp"
+#include "managers/command_manager.hpp"
 
 using namespace Managers;
 

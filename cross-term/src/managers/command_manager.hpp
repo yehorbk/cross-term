@@ -1,12 +1,18 @@
 #pragma once
 
 #include <regex>
-#include <unistd.h>
+#if unix || __APPLE__ || __linux__
+    #include <unistd.h>
+#elif _WIN32
+    #include <direct.h>
+    #define popen  _popen
+    #define pclose  _pclose
+#endif
 
-#include "trim.hpp"
+#include "lib/trim/trim.hpp"
 
-#include "imports.hpp"
-#include "logger.hpp"
+#include "environment/imports.hpp"
+#include "environment/logger.hpp"
 
 namespace Managers {
 

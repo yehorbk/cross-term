@@ -1,18 +1,18 @@
 #pragma once
 
 #if __has_include(<filesystem>)
-#  include <filesystem>
+    #include <filesystem>
 #elif __has_include(<experimental/filesystem>)
-#  include <experimental/filesystem>
+    #include <experimental/filesystem>
 #endif
 #include <fstream>
 
-#include "pugixml.hpp"
-#include "trim.hpp"
+#include "lib/pugixml/pugixml.hpp"
+#include "lib/trim/trim.hpp"
 
-#include "imports.hpp"
-#include "logger.hpp"
-#include "config.hpp"
+#include "environment/imports.hpp"
+#include "environment/logger.hpp"
+#include "models/config.hpp"
 
 using namespace pugi;
 

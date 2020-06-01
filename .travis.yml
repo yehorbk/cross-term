@@ -1,4 +1,4 @@
-dist:     bionic
+dist: bionic
 
 language: cpp
 
@@ -18,13 +18,13 @@ env:
 
 matrix:
     exclude:
-        - os:       osx
+        - os: osx
           compiler: gcc
 
-        - os:  osx
+        - os: osx
           env: TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
 
-        - os:  osx
+        - os: osx
           env: TARGET_CPU=x86 BUILD_CONFIGURATION=Release
 
 script:
