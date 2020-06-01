@@ -3,7 +3,13 @@ This file contains all notable changes of the [cross-term](https://github.com/ye
 
 ## [Unreleased](https://github.com/yehorbk/cross-term/commits/master)
 
-## [v1.0.1](https://github.com/yehorbk/cross-term/releases/tag/v1.0.1) - 31-06-2020
+## [v1.1.0](https://github.com/yehorbk/cross-term/releases/tag/v1.1.0) - 01-06-2020
+
+### Added
+
+- Windows support
+
+## [v1.0.1](https://github.com/yehorbk/cross-term/releases/tag/v1.0.1) - 31-05-2020
 
 ### Added
 
@@ -16,7 +22,7 @@ This file contains all notable changes of the [cross-term](https://github.com/ye
 - "File Manager" renamed to "Settings Manager"
 - Error functionality
 
-## [v1.0.0](https://github.com/yehorbk/cross-term/releases/tag/v1.0.0) - 19-06-2020
+## [v1.0.0](https://github.com/yehorbk/cross-term/releases/tag/v1.0.0) - 19-05-2020
 
 ### Added
 
