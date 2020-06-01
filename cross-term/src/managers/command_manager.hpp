@@ -5,6 +5,8 @@
     #include <unistd.h>
 #elif _WIN32
     #include <direct.h>
+    #define popen  _popen
+    #define pclose  _pclose
 #endif
 
 
