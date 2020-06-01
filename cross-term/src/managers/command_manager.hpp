@@ -1,7 +1,12 @@
 #pragma once
 
 #include <regex>
-#include <unistd.h>
+#if unix || __APPLE__ || __linux__
+    #include <unistd.h>
+#elif _WIN32
+    #inlcude <direct.h>
+#endif
+
 
 #include "lib/trim/trim.hpp"
 
