@@ -3,10 +3,10 @@
 #include <regex>
 #include <unistd.h>
 
-#include "trim.hpp"
+#include "lib/trim/trim.hpp"
 
-#include "imports.hpp"
-#include "logger.hpp"
+#include "environment/imports.hpp"
+#include "environment/logger.hpp"
 
 namespace Managers {
 

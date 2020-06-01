@@ -1,4 +1,4 @@
-image: Visual Studio 2015
+image: Visual Studio 2019
 
 init:
     - git config --global core.autocrlf input
@@ -19,9 +19,9 @@ configuration:
 
 environment:
     matrix:
-        - TOOLCHAIN: msvc10
-        - TOOLCHAIN: msvc12
-        - TOOLCHAIN: msvc14
+        - TOOLCHAIN: msvc15
+        - TOOLCHAIN: msvc17
+        - TOOLCHAIN: msvc19
 
 build_script:
     - cd cross-term
@@ -29,20 +29,3 @@ build_script:
     - cd build
     - cmake .. %CMAKE_CONFIGURE_FLAGS%
     - cmake --build . %CMAKE_BUILD_FLAGS%
-
-artifacts:
-    - path: <local-package-path>
-      name: package_name
-
-deploy:
-    description: '$(APPVEYOR_REPO_TAG_NAME)'
-    provider: GitHub
-
-    auth_token:
-        secure: <encrypted-github-token>
-
-    artifact: package_name
-    force_update: true
-
-    on:
-        appveyor_repo_tag: true

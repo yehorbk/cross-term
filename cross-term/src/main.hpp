@@ -1,12 +1,12 @@
 #pragma once
 
-#include "imports.hpp"
-#include "config.hpp"
+#include <imports.hpp>
+#include <config.hpp>
 
-#include "settings_manager.hpp"
-#include "command_manager.hpp"
+#include "managers/settings_manager.hpp"
+#include "managers/command_manager.hpp"
 
-#include "shell.hpp"
+#include "controllers/shell.hpp"
 
 using namespace Managers;
 using namespace Controllers;
