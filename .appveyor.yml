@@ -20,8 +20,7 @@ configuration:
 environment:
     matrix:
         - TOOLCHAIN: msvc15
-        - TOOLCHAIN: msvc17
-        - TOOLCHAIN: msvc19
+        - TOOLCHAIN: msvc16
 
 build_script:
     - cd cross-term
