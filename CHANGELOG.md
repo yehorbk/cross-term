@@ -3,6 +3,12 @@ This file contains all notable changes of the [cross-term](https://github.com/ye
 
 ## [Unreleased](https://github.com/yehorbk/cross-term/commits/master)
 
+## [v1.1.1](https://github.com/yehorbk/cross-term/releases/tag/v1.1.1) - 03-06-2020
+
+### Fixed
+
+- [Bug](https://github.com/yehorbk/cross-term/issues/4) with path separator on Windows
+
 ## [v1.1.0](https://github.com/yehorbk/cross-term/releases/tag/v1.1.0) - 01-06-2020
 
 ### Added
