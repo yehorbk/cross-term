@@ -1,5 +1,11 @@
 #pragma once
 
+#if unix || __APPLE__ || __linux__
+    #define PATH_SEPARATOR "/"
+#elif _WIN32
+    #define PATH_SEPARATOR "\\"
+#endif
+
 #if __has_include(<filesystem>)
     #include <filesystem>
 #elif __has_include(<experimental/filesystem>)

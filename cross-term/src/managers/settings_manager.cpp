@@ -3,7 +3,7 @@
 namespace Managers {
 
     SettingsManager::SettingsManager(string path) {
-        string file = path.substr(0, path.find_last_of("/"))
+        string file = path.substr(0, path.find_last_of(PATH_SEPARATOR))
             + this->SETTINGS_FILENAME;
         xml_parse_result parseResult = this->doc.load_file(file.c_str());
         if (((string)parseResult.description())
