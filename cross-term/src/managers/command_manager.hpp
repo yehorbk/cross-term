@@ -24,7 +24,7 @@ namespace Managers {
         string getCommandResult(string command);
 
     private:
-        string specialCommands[1] = { "cd" };
+        string specialCommands[2] = { "cd", "exit" };
         map<string, string> commandsList;
         string getCommandByKey(string command);
         bool checkIsSpecialCommand(string command);

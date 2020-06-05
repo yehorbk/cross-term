@@ -64,6 +64,8 @@ namespace Managers {
     void CommandManager::executeSpecial(string command, string args) {
         if (command == "cd") {
             chdir(args.c_str());
+        } else if (command == "exit") {
+            exit(0);
         }
     }
 
