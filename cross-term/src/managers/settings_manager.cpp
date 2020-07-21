@@ -2,14 +2,12 @@
 
 namespace Managers {
 
-    SettingsManager::SettingsManager(string path) {
-        string file = path.substr(0, path.find_last_of(PATH_SEPARATOR))
-            + this->SETTINGS_FILENAME;
-        xml_parse_result parseResult = this->doc.load_file(file.c_str());
-        if (((string)parseResult.description())
-            .compare("File was not found") == 0) {
-            Logger::error(Error(ErrorCase::SETTINGS_FILE_NOT_FOUND));
+    SettingsManager::SettingsManager() {
+        this->initSettingsFilePath();
+        if (!this->checkIsFileExists()) {
+            this->createSettingsFile();
         }
+        this->loadSettingsFile();
     }
 
     map<string, string> SettingsManager::loadCommands() {
@@ -28,6 +26,38 @@ namespace Managers {
         string greeting = settings.child_value("greeting");
         string prompt = settings.child_value("prompt");
         return Models::Config(greeting, prompt);
+    }
+
+    void SettingsManager::initSettingsFilePath() {
+        string HOME;
+        const string FILENAME = "crossterm.xml";
+        #if unix || __APPLE__ || __linux__
+            HOME = string(getenv("HOME")) + "/";
+        #elif _WIN32
+            HOME = string(getenv("USERPROFILE")) + "\\";
+        #endif
+        this->settingsFilePath = HOME + FILENAME;
+    }
+
+    bool SettingsManager::checkIsFileExists() {
+        ifstream file(this->settingsFilePath);
+        return file.is_open();
+    }
+
+    void SettingsManager::createSettingsFile() {
+        xml_document file;
+        xml_node settings = file.append_child("settings");
+        xml_node commands = file.append_child("commands");
+        settings.append_child("greeting").text().set("");
+        settings.append_child("prompt").text().set("printf \"$ \"");
+        xml_node firstCommand = commands.append_child("Item");
+        firstCommand.append_child("command").text().set("hello");
+        firstCommand.append_child("execute").text().set("echo \"Hello Cross-term!\"");
+        file.save_file(this->settingsFilePath.c_str());
+    }
+
+    void SettingsManager::loadSettingsFile() {
+        this->doc.load_file(this->settingsFilePath.c_str());
     }
 
 }

@@ -1,11 +1,5 @@
 #pragma once
 
-#if unix || __APPLE__ || __linux__
-    #define PATH_SEPARATOR "/"
-#elif _WIN32
-    #define PATH_SEPARATOR "\\"
-#endif
-
 #if __has_include(<filesystem>)
     #include <filesystem>
 #elif __has_include(<experimental/filesystem>)
@@ -26,14 +20,18 @@ namespace Managers {
 
     class SettingsManager {
     public:
-        SettingsManager(string path);
+        SettingsManager();
         map<string, string> loadCommands();
         Models::Config loadConfig();
 
     private:
-        const string SETTINGS_FILENAME = "/settings.xml";
         xml_document doc;
+        string settingsFilePath;
+        void initSettingsFilePath();
         void logFileLoading(string result);
+        bool checkIsFileExists();
+        void createSettingsFile();
+        void loadSettingsFile();
     };
 
 }
