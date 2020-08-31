@@ -6,7 +6,7 @@
 # How to use
 All settings are in file settings.xml. This file have a basic structure and consists of `greeting`, `prompt` and `commands` sections. You able to use any commands or run files with scripts.
 ## Settings XML Basic Structure
-```
+```xml
 <?xml version="1.0"?>
 <settings>
   <greeting><!-- TODO --></greeting>
@@ -27,26 +27,26 @@ All settings are in file settings.xml. This file have a basic structure and cons
 - `execute` - script or file what will be executed
 # Examples of Configuration
 ## Simple Unix Terminal
-```
+```xml
 <!-- settings.xml -->
 ...
 <greeting>date</greeting>
 <prompt>printf "$USER:${PWD##*/}$ "</prompt>
 ...
 ```
-```
+```bash
 # result
 Tue May 19 20:55:49 EEST 2020
 admin:Desktop$  
 ```
 ## Git Publisher
-```
+```bash
 # publish.sh
 git add . ;
 git commit ;
 git push
 ```
-```
+```xml
 <!-- settings.xml: -->
 ...
 <Item>
@@ -65,4 +65,4 @@ git push
 - `gcc` and `g++` compilers
 - `c++11` or above C++ versions
 # Author
-**Yehor Bublyk**: [GitHub](https://github.com/yehorbk) • [Twitter](https://twitter.com/thisisyehorbk)
+**Yehor Bublyk**: [GitHub](https://github.com/yehorbk) • [Twitter](https://twitter.com/yehorbk)
