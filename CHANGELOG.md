@@ -3,6 +3,17 @@ This file contains all notable changes of the [cross-term](https://github.com/ye
 
 ## [Unreleased](https://github.com/yehorbk/cross-term/commits/master)
 
+## [v1.2.1](https://github.com/yehorbk/cross-term/releases/tag/v1.2.1) - 31-08-2020
+
+### Added
+
+- [Exit](https://github.com/yehorbk/cross-term/issues/3) command support
+- Creating configuration file if it not exists
+
+### Fixed
+
+- Refactoring
+
 ## [v1.1.1](https://github.com/yehorbk/cross-term/releases/tag/v1.1.1) - 03-06-2020
 
 ### Fixed
