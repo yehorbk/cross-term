@@ -10,22 +10,32 @@ namespace Managers {
         this->loadSettingsFile();
     }
 
-    map<string, string> SettingsManager::loadCommands() {
-        map<string, string> result;
-        xml_node commands = this->doc.child("commands");
-        for (xml_node command : commands.children("Item")) {
-            string title = command.child_value("command");
-            string execute = command.child_value("execute");
-            result.insert(pair<string, string>(trim(title), trim(execute)));
-        }
-        return result;
+    Models::Config SettingsManager::loadConfig() {
+        xml_node settings = this->doc
+            .child(SettingsFileIdentifiers::SETTINGS);
+        string greeting = settings
+            .child_value(SettingsFileIdentifiers::GREETING);
+        string prompt = settings
+            .child_value(SettingsFileIdentifiers::PROMPT);
+        return Models::Config(greeting, prompt);
     }
 
-    Models::Config SettingsManager::loadConfig() {
-        xml_node settings = this->doc.child("settings");
-        string greeting = settings.child_value("greeting");
-        string prompt = settings.child_value("prompt");
-        return Models::Config(greeting, prompt);
+    map<string, string> SettingsManager::loadCommands() {
+        map<string, string> result;
+        xml_node commands = this->doc
+            .child(SettingsFileIdentifiers::COMMANDS);
+        for (xml_node item : commands.children(
+                SettingsFileIdentifiers::ITEM)) {
+            string command = item
+                .child_value(SettingsFileIdentifiers::COMMAND);
+            string execute = item
+                .child_value(SettingsFileIdentifiers::EXECUTE);
+            result.insert(pair<string, string>(
+                trim(command),
+                trim(execute)
+            ));
+        }
+        return result;
     }
 
     void SettingsManager::initSettingsFilePath() {
@@ -46,13 +56,20 @@ namespace Managers {
 
     void SettingsManager::createSettingsFile() {
         xml_document file;
-        xml_node settings = file.append_child("settings");
-        xml_node commands = file.append_child("commands");
-        settings.append_child("greeting").text().set("");
-        settings.append_child("prompt").text().set("printf \"$ \"");
-        xml_node firstCommand = commands.append_child("Item");
-        firstCommand.append_child("command").text().set("hello");
-        firstCommand.append_child("execute").text().set("echo \"Hello Cross-term!\"");
+        xml_node settings = file
+            .append_child(SettingsFileIdentifiers::SETTINGS);
+        xml_node commands = file
+            .append_child(SettingsFileIdentifiers::COMMANDS);
+        settings.append_child(SettingsFileIdentifiers::GREETING)
+            .text().set("");
+        settings.append_child(SettingsFileIdentifiers::PROMPT)
+            .text().set(DefaultConfiguration::PROMPT);
+        xml_node firstCommand = commands
+            .append_child(SettingsFileIdentifiers::ITEM);
+        firstCommand.append_child(SettingsFileIdentifiers::COMMAND)
+            .text().set(DefaultConfiguration::COMMAND);
+        firstCommand.append_child(SettingsFileIdentifiers::EXECUTE)
+            .text().set(DefaultConfiguration::EXECUTE);
         file.save_file(this->settingsFilePath.c_str());
     }
 

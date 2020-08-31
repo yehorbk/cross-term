@@ -11,24 +11,50 @@
 #include "lib/trim/trim.hpp"
 
 #include "environment/imports.hpp"
-#include "environment/logger.hpp"
 #include "models/config.hpp"
 
 using namespace pugi;
 
 namespace Managers {
 
+    class SettingsFileIdentifiers {
+    public:
+        // Config
+        static constexpr const char* SETTINGS = "settings";
+        static constexpr const char* GREETING = "greeting";
+        static constexpr const char* PROMPT = "prompt";
+
+        // Commands
+        static constexpr const char* COMMANDS = "commands";
+        static constexpr const char* ITEM = "item";
+        static constexpr const char* COMMAND = "command";
+        static constexpr const char* EXECUTE = "execute";
+    };
+
+    class DefaultConfiguration {
+    public:
+        // Prompt
+        #if unix || __APPLE__ || __linux__
+            static constexpr const char* PROMPT = "printf \"$ \"";
+        #elif _WIN32
+            static constexpr const char* PROMPT = "echo | set /p=$ ";
+        #endif
+
+        // Commands
+        static constexpr const char* COMMAND = "hello";
+        static constexpr const char* EXECUTE = "echo \"Hello Cross-term!\"";
+    };
+
     class SettingsManager {
     public:
         SettingsManager();
-        map<string, string> loadCommands();
         Models::Config loadConfig();
+        map<string, string> loadCommands();
 
     private:
-        xml_document doc;
         string settingsFilePath;
+        xml_document doc;
         void initSettingsFilePath();
-        void logFileLoading(string result);
         bool checkIsFileExists();
         void createSettingsFile();
         void loadSettingsFile();

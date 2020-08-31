@@ -16,6 +16,12 @@
 
 namespace Managers {
 
+    class SpecialCommand {
+    public:
+        static constexpr const char* CD = "cd";
+        static constexpr const char* EXIT = "exit";
+    };
+
     class CommandManager {
     public:
         CommandManager();
@@ -24,7 +30,10 @@ namespace Managers {
         string getCommandResult(string command);
 
     private:
-        string specialCommands[2] = { "cd", "exit" };
+        string specialCommands[2] = { 
+            SpecialCommand::CD,
+            SpecialCommand::EXIT
+        };
         map<string, string> commandsList;
         string getCommandByKey(string command);
         bool checkIsSpecialCommand(string command);

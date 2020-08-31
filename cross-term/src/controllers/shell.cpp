@@ -10,7 +10,7 @@ namespace Controllers {
     void Shell::startShell() {
         this->showGreetings();
         string command;
-        while(true) {
+        while (true) {
             this->showCommandPrompt();
             getline(cin, command);
             this->commandManager.executeCommand(command);

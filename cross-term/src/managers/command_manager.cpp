@@ -18,21 +18,6 @@ namespace Managers {
         }
     }
 
-    string CommandManager::getCommandByKey(string command) {
-        string result = command;
-        if (CommandManager::commandsList.size() != 0) {
-            for(auto& item : CommandManager::commandsList) {
-                if (command.find(item.first) != -1) {
-                    result = regex_replace(command,
-                        regex(item.first), item.second);
-                }
-            }
-        } else {
-            result = command;
-        }
-        return result;
-    }
-
     string CommandManager::getCommandResult(string command) {
         char buffer[128];
         string result = "";
@@ -50,6 +35,21 @@ namespace Managers {
         return result;
     }
 
+    string CommandManager::getCommandByKey(string command) {
+        string result = command;
+        if (CommandManager::commandsList.size() != 0) {
+            for(auto& item : CommandManager::commandsList) {
+                if (command.find(item.first) != -1) {
+                    result = regex_replace(command,
+                        regex(item.first), item.second);
+                }
+            }
+        } else {
+            result = command;
+        }
+        return result;
+    }
+
     bool CommandManager::checkIsSpecialCommand(string command) {
         for (const string &key : this->specialCommands) {
             if (command.find(key) != -1) {
@@ -61,10 +61,10 @@ namespace Managers {
         return false;
     }
 
-    void CommandManager::executeSpecial(string command, string args) {
-        if (command == "cd") {
+    void CommandManager::executeSpecial(string command, string args) {        
+        if (command == SpecialCommand::CD) {
             chdir(args.c_str());
-        } else if (command == "exit") {
+        } else if (command == SpecialCommand::EXIT) {
             exit(0);
         }
     }
